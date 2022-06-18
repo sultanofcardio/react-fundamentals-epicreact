@@ -2,38 +2,59 @@
 <!-- http://localhost:3000/isolated/exercise/02.html -->
 
 <body>
-  <div id="root"></div>
+<div id="root"></div>
 
-  <!-- 🐨 add React and ReactDOM on the page.
-       💰 Here are script tags that'll do the job:
-  <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
-  -->
-  <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+<!-- 🐨 add React and ReactDOM on the page.
+     💰 Here are script tags that'll do the job:
+<script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+-->
+<script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
 
-  <script type="module">
-    const rootElement = document.getElementById('root')
+<script type="module">
+  const rootElement = document.getElementById('root')
 
-    // You're going to re-implement this code using React!
-    // 💣 So go ahead and delete this implementation (or comment it out for now)
-    // These three lines are similar to React.createElement
-    // const element = document.createElement('div')
-    // element.textContent = 'Hello World' // 💰 in React, you set this with the "children" prop
-    // element.className = 'container' // 💰 in React, this is also called the "className" prop
-    // This is similar to ReactDOM.createRoot().render()
-    // rootElement.append(element)
+  // You're going to re-implement this code using React!
+  // 💣 So go ahead and delete this implementation (or comment it out for now)
+  // These three lines are similar to React.createElement
+  // const element = document.createElement('div')
+  // element.textContent = 'Hello World' // 💰 in React, you set this with the "children" prop
+  // element.className = 'container' // 💰 in React, this is also called the "className" prop
+  // This is similar to ReactDOM.createRoot().render()
+  // rootElement.append(element)
 
-    // 🐨 Please re-implement the regular document.createElement code above
-    // with these React API calls
-    // 💰 The example in the markdown file should be a good hint for you.
-    const element = React.createElement('div', {
-      children: 'Hello World',
-      className: 'container'
-    })
+  // 🐨 Please re-implement the regular document.createElement code above
+  // with these React API calls
+  // 💰 The example in the markdown file should be a good hint for you.
+  const helloSpan = React.createElement('span', {
+    key: 'hello',
+    children: 'Hello'
+  })
 
-    const root = ReactDOM.createRoot(rootElement);
-    root.render(element);
+  const worldSpan = React.createElement('span', {
+    key: 'world',
+    children: 'World'
+  })
 
-  </script>
+  // There won't be a space between the words but I guess that's fine
+  const element = React.createElement('div', {
+    children: [helloSpan, ' ', worldSpan],
+    className: 'container'
+  })
+
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(element);
+
+  document.onreadystatechange = function() {
+    // Let's clean up the body to get as close to the desired output as possible
+
+    // Remove HTML comments from document body
+    document.body.innerHTML = document.body.innerHTML.replace(/<!--[\s\S]*?-->/g, '')
+
+    // Remove script tags
+    document.body.innerHTML = document.body.innerHTML.replace(/<script[\S\s]*?<\/script>/g, '')
+  }
+
+</script>
 </body>
