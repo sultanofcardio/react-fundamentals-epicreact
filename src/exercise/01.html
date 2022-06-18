@@ -6,7 +6,10 @@
 <!--   📜 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attributes -->
 <!--   📜 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules -->
 <!--   📜 https://github.com/mdn/js-examples/tree/master/module-examples -->
-<div id="root"></div>
+<script>
+    const root = document.createElement('root');
+    document.body.append(root);
+</script>
 
 
 <!-- These next instructions are to be written in JavaScript in the <script> tag -->
@@ -26,6 +29,5 @@
 <!--   💰 document.getElementById('root') -->
 <!--   📜 https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/append -->
 <script>
-  const root = document.getElementById('root');
   root.append(div);
 </script>
